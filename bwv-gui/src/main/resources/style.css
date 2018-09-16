@@ -1,0 +1,41 @@
+.left-pane{
+    -fx-background-color: #252525;
+}
+
+.right-pane{
+    -fx-background-color: #222222;
+}
+
+.menu-bar, .menu, .menu-bar{
+    -fx-background-color: #222222;
+}
+
+.menu-bar .label{
+    -fx-text-fill: #6b6a6a;
+    -fx-font-size: 16;
+}
+
+.menu:hover, .menu:showing, .menu-item:focused{
+    -fx-background-color: #cbc9c9;
+}
+
+.menu-item{
+    -fx-start-margin: 15;
+}
+
+.context-menu{
+    -fx-background-color: #222222;
+}
+
+.title-window{
+    -fx-background-color: #222222;
+}
+
+.close{
+    -fx-background-color: #73fbef;
+    -fx-background-radius: 100em;
+    -fx-min-width: .5em;
+    -fx-min-height: .5em;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 8;
+}

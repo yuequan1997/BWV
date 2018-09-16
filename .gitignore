@@ -1,0 +1,4 @@
+*.iml
+target/**
+bwv-gui/target/
+.idea/**

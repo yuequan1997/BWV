@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../../../../../../resources/style.css, @/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.yuequan.bwv.gui.controller.AppController">
+   <left>
+      <AnchorPane fx:id="leftPane" prefHeight="200.0" prefWidth="200.0" styleClass="left-pane" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="50.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label alignment="CENTER" layoutX="72.0" layoutY="9.0" onMouseDragged="#handleTitleWindowOnMouseDragged" onMousePressed="#handleTitleWindowOnMousePressed" text="BCV" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
+   </left>
+   <center>
+      <AnchorPane fx:id="rightPane" prefHeight="200.0" prefWidth="200.0" styleClass="right-pane" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane layoutX="7.0" onMouseDragged="#handleTitleWindowOnMouseDragged" onMousePressed="#handleTitleWindowOnMousePressed" prefHeight="50.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <MenuBar layoutX="2.0" layoutY="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                    <menus>
+                      <Menu mnemonicParsing="false" styleClass="menu" text="File">
+                        <items>
+                          <MenuItem mnemonicParsing="false" text="Open..." />
+                              <MenuItem mnemonicParsing="false" text="Open Jars" />
+                        </items>
+                      </Menu>
+                    </menus>
+                  </MenuBar>
+                  <Button layoutX="563.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" styleClass="close" text="X" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="16.0" />
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
+   </center>
+</BorderPane>
