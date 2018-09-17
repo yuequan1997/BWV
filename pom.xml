@@ -9,6 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>bwv-gui</module>
+        <module>bwv-classfile</module>
     </modules>
     <packaging>pom</packaging>
 
