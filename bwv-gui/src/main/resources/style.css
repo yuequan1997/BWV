@@ -39,3 +39,19 @@
     -fx-text-fill: #ffffff;
     -fx-font-size: 8;
 }
+
+.left-pane__scroll-pannel{
+    -fx-background-color: #252525;
+}
+.scroll-panel__tree-panel, .tree-view, .tree-cell{
+    -fx-background-color: #252525;
+}
+
+.tree-cell{
+    -fx-text-fill: #cbc9c9;
+}
+
+
+.tree-cell > .tree-disclosure-node > .arrow {
+    -fx-background-color: #cbc9c9;
+}
