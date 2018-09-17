@@ -1,4 +1,5 @@
 *.iml
 target/**
-bwv-gui/target/
+bwv-gui/target/**
+bwv-classfile/target/**
 .idea/**
