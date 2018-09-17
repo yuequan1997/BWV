@@ -13,6 +13,10 @@
     </modules>
     <packaging>pom</packaging>
 
+    <properties>
+        <bwv.version>1.0-SNAPSHOT</bwv.version>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
