@@ -11,5 +11,11 @@
 
     <artifactId>bwv-gui</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>org.yuequan.bwv</groupId>
+            <artifactId>bwv-classfile</artifactId>
+            <version>${bwv.version}</version>
+        </dependency>
+    </dependencies>
 </project>
