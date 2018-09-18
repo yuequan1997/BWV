@@ -9,10 +9,14 @@ import javafx.scene.control.TreeView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Window;
 import org.yuequan.bwv.classfile.ClassFileComponent;
+import org.yuequan.bwv.classfile.parser.ClassFileParser;
 import org.yuequan.bwv.gui.tree.ClassFileNode;
 import org.yuequan.bwv.gui.tree.ClassFileTreeItem;
+
+import java.io.File;
 
 /**
  * The type App controller.
@@ -94,6 +98,17 @@ public class AppController {
     public void handleTitleWindowOnMouseDragged(MouseEvent mouseEvent){
         getWindow().setX(mouseEvent.getScreenX() + xOffset);
         getWindow().setY(mouseEvent.getScreenY() + yOffset);
+    }
+
+    @FXML
+    public void handleOpenFileOnAction(ActionEvent event){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Class File");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Choose Class File", "*.class"));
+        File file = fileChooser.showOpenDialog(getWindow());
+        if(file != null){
+            new ClassFileParser(file).parser();
+        }
     }
 
     private Window getWindow(){
