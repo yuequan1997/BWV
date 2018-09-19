@@ -20,6 +20,7 @@ public class ClassFileParser {
             byte[] classBytes = Files.readAllBytes(Paths.get(classFile.getAbsolutePath()));
             ClassFileReader reader = new ClassFileReader(classBytes);
             ClassFile classFile = new ClassFile(reader);
+            System.out.println("Completed Parser");
         } catch (IOException e) {
             //TODO: Exception Handler
             e.printStackTrace();

@@ -20,7 +20,6 @@ public class ConstantInfo {
         this.constantPoolCount = constantPoolCount;
         this.fileReader = fileReader;
         fillInfos();
-        System.out.println("Compeleted");
     }
 
     private void fillInfos() {
