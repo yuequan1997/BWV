@@ -18,7 +18,7 @@ public class ClassFile {
         this.minorVersion = new U2("minor_version", fileReader.readShort());
         this.majorVersion = new U2("major_version", fileReader.readShort());
         this.constantPoolCount = new U2("constant_pool_count", fileReader.readShort());
-        this.constantPool = new ConstantPool(this.constantPoolCount, fileReader.readBytes(constantPoolCount.getValue() - 1));
+        this.constantPool = new ConstantPool(this.constantPoolCount, fileReader);
     }
 
 }

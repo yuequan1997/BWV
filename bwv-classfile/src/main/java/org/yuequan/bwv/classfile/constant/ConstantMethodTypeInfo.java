@@ -6,10 +6,10 @@ import org.yuequan.bwv.classfile.reader.ClassFileReader;
 
 import java.nio.ByteBuffer;
 
-public class ConstantStringInfo extends Info{
-    private final U2 stringIndex;
-    public ConstantStringInfo(U1 tag, ClassFileReader fileReader) {
+public class ConstantMethodTypeInfo extends Info {
+    private final U2 descriptorIndex;
+    public ConstantMethodTypeInfo(U1 tag, ClassFileReader fileReader) {
         super(tag, fileReader);
-        stringIndex = new U2("string_index", fileReader.readShort());
+        this.descriptorIndex = new U2("descriptor_index", fileReader.readShort());
     }
 }
