@@ -62,6 +62,10 @@ public class ClassFile {
         return magic;
     }
 
+    public String getMagicHex(){
+        return "0x" + Integer.toHexString(magic.getValue()).toUpperCase();
+    }
+
     public U2 getMinorVersion() {
         return minorVersion;
     }
