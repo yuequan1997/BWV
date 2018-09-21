@@ -15,15 +15,16 @@ public class ClassFileParser {
         this.classFile = classFile;
     }
 
-    public void parser(){
+    public ClassFile parser(){
         try {
             byte[] classBytes = Files.readAllBytes(Paths.get(classFile.getAbsolutePath()));
             ClassFileReader reader = new ClassFileReader(classBytes);
             ClassFile classFile = new ClassFile(reader);
-            System.out.println("Completed Parser");
+            return classFile;
         } catch (IOException e) {
             //TODO: Exception Handler
             e.printStackTrace();
         }
+        return null;
     }
 }
