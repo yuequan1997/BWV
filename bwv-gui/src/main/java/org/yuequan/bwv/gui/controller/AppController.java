@@ -11,10 +11,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
-import org.yuequan.bwv.classfile.ClassFileComponent;
+import org.yuequan.bwv.classfile.ClassFile;
 import org.yuequan.bwv.classfile.parser.ClassFileParser;
 import org.yuequan.bwv.gui.tree.ClassFileNode;
 import org.yuequan.bwv.gui.tree.ClassFileTreeItem;
+import org.yuequan.bwv.gui.tree.ClassFileTreePackable;
 
 import java.io.File;
 
@@ -41,30 +42,30 @@ public class AppController {
      */
     @FXML
     public void initialize(){
-        ClassFileTreeItem rootItem = new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("Test.class")));
-        rootItem.setExpanded(true);
-        for (int i = 0; i < 6; i++) {
-            ClassFileTreeItem item;
-            if(i == 0){
-                item = new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("macgic: 0XCAFEBABE")));
-            }else if(i == 1){
-                item = new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("minor_version: 0")));
-            }else if(i == 2){
-                item = new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("major_version: 52")));
-            }else if(i == 3){
-                item = new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("constant_pool_count: 13")));
-            }else if(i == 4){
-                item = new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("constant_pool")));
-                item.getChildren().add(new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("no message"))));
-                item.getChildren().add(new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("no message"))));
-            } else if(i == 5){
-                item = new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("interfaces_count: 0")));
-            }else{
-                item = new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("no message")));
-            }
-            rootItem.getChildren().add(item);
-        }
-        treeView.setRoot(rootItem);
+//        ClassFileTreeItem rootItem = new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("Test.class")));
+//        rootItem.setExpanded(true);
+//        for (int i = 0; i < 6; i++) {
+//            ClassFileTreeItem item;
+//            if(i == 0){
+//                item = new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("macgic: 0XCAFEBABE")));
+//            }else if(i == 1){
+//                item = new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("minor_version: 0")));
+//            }else if(i == 2){
+//                item = new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("major_version: 52")));
+//            }else if(i == 3){
+//                item = new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("constant_pool_count: 13")));
+//            }else if(i == 4){
+//                item = new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("constant_pool")));
+//                item.getChildren().add(new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("no message"))));
+//                item.getChildren().add(new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("no message"))));
+//            } else if(i == 5){
+//                item = new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("interfaces_count: 0")));
+//            }else{
+//                item = new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("no message")));
+//            }
+//            rootItem.getChildren().add(item);
+//        }
+       // treeView.setRoot(rootItem);
 
     }
 
@@ -107,7 +108,7 @@ public class AppController {
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Choose Class File", "*.class"));
         File file = fileChooser.showOpenDialog(getWindow());
         if(file != null){
-            new ClassFileParser(file).parser();
+            ClassFileTreePackable.pack(new ClassFileParser(file).parser(), treeView);
         }
     }
 
