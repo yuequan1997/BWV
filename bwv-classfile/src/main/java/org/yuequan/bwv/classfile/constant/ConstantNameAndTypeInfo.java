@@ -14,4 +14,12 @@ public class ConstantNameAndTypeInfo extends Info {
         this.nameIndex = new U2("name_index", fileReader.readShort());
         this.descriptorIndex = new U2("descriptor_index", fileReader.readShort());
     }
+
+    public U2 getNameIndex() {
+        return nameIndex;
+    }
+
+    public U2 getDescriptorIndex() {
+        return descriptorIndex;
+    }
 }

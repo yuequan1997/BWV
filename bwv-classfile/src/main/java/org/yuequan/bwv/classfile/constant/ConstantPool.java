@@ -12,4 +12,9 @@ public class ConstantPool {
         this.constantPoolCount = constantPoolCount;
         this.constantInfo = new ConstantInfo(constantPoolCount, fileReader);
     }
+
+    public ConstantInfo getConstantInfo() {
+        return constantInfo;
+    }
+
 }

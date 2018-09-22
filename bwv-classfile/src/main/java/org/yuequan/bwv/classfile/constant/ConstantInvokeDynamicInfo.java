@@ -14,4 +14,12 @@ public class ConstantInvokeDynamicInfo extends Info {
         this.bootstrapMethodAttrIndex = new U2("bootstrap_method_attr_index", fileReader.readShort());
         this.nameAndTypeIndex = new U2("name_and_type_index", fileReader.readShort());
     }
+
+    public U2 getNameAndTypeIndex() {
+        return nameAndTypeIndex;
+    }
+
+    public U2 getBootstrapMethodAttrIndex() {
+        return bootstrapMethodAttrIndex;
+    }
 }

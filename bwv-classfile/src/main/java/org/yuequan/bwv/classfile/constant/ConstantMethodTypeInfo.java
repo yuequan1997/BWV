@@ -12,4 +12,8 @@ public class ConstantMethodTypeInfo extends Info {
         super(tag, fileReader);
         this.descriptorIndex = new U2("descriptor_index", fileReader.readShort());
     }
+
+    public U2 getDescriptorIndex() {
+        return descriptorIndex;
+    }
 }

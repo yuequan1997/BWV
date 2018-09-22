@@ -13,9 +13,11 @@ import static jdk.nashorn.internal.runtime.ScriptingFunctions.exec;
 public class ConstantInfo {
     private final U2 constantPoolCount;
     private final ClassFileReader fileReader;
-    private List<Info> infos = new ArrayList<>();
-    private Map<Integer, String> constantUtf8StringMapper = new HashMap<>();
-    private Map<Integer, ConstantUtf8Info> constantUtf8InfoMapper = new HashMap<>();
+    private final List<Info> infos = new ArrayList<>();
+    private final List<InfoWrapper> infoWrappers = new ArrayList<>();
+    private final Map<Integer, String> constantUtf8StringMapper = new HashMap<>();
+    private final Map<Integer, ConstantUtf8Info> constantUtf8InfoMapper = new HashMap<>();
+
     public ConstantInfo(U2 constantPoolCount, ClassFileReader fileReader) {
         this.constantPoolCount = constantPoolCount;
         this.fileReader = fileReader;
@@ -27,6 +29,15 @@ public class ConstantInfo {
             U1 tag = new U1("tag", fileReader.readByte());
             new ConstantInfoStrategy(i, tag);
         }
+        infos.forEach(info -> {
+            infoWrappers.add(new InfoWrapper(info, constantUtf8StringMapper, infos));
+        });
+    }
+
+    public List<Info> getInfos() {
+        List<Info> infos =  new ArrayList<>();
+        infos.addAll(this.infos);
+        return infos;
     }
 
     private class ConstantInfoStrategy{
@@ -89,5 +100,9 @@ public class ConstantInfo {
                     break;
             }
         }
+    }
+
+    public List<InfoWrapper> getInfoWrappers() {
+        return infoWrappers;
     }
 }

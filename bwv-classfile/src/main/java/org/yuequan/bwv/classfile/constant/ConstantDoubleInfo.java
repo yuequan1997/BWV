@@ -14,4 +14,12 @@ public class ConstantDoubleInfo extends Info {
         this.highBytes = new U4("high_bytes",fileReader.readInt());
         this.lowBytes = new U4("low_bytes", fileReader.readInt());
     }
+
+    public U4 getHighBytes() {
+        return highBytes;
+    }
+
+    public U4 getLowBytes() {
+        return lowBytes;
+    }
 }

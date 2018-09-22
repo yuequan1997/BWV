@@ -12,4 +12,8 @@ public class ConstantStringInfo extends Info{
         super(tag, fileReader);
         stringIndex = new U2("string_index", fileReader.readShort());
     }
+
+    public U2 getStringIndex() {
+        return stringIndex;
+    }
 }

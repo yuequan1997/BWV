@@ -12,4 +12,8 @@ public class ConstantIntegerInfo extends Info{
         super(tag, fileReader);
         bytes = new U4("bytes", fileReader.readInt());
     }
+
+    public U4 getBytes() {
+        return bytes;
+    }
 }

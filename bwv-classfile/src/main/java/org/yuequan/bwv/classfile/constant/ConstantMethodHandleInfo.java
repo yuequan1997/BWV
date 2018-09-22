@@ -14,4 +14,12 @@ public class ConstantMethodHandleInfo extends Info {
         this.referenceKind = new U1("reference_kind", fileReader.readByte());
         this.referenceIndex = new U2("reference_index", fileReader.readShort());
     }
+
+    public U1 getReferenceKind() {
+        return referenceKind;
+    }
+
+    public U2 getReferenceIndex() {
+        return referenceIndex;
+    }
 }

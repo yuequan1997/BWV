@@ -14,4 +14,12 @@ public class ConstantInterfaceMethodRefInfo extends Info{
         this.classIndex = new U2("class_index", fileReader.readShort());
         this.nameAndTypeIndex = new U2("name_and_type_index", fileReader.readShort());
     }
+
+    public U2 getClassIndex() {
+        return classIndex;
+    }
+
+    public U2 getNameAndTypeIndex() {
+        return nameAndTypeIndex;
+    }
 }

@@ -12,4 +12,8 @@ public class ConstantClassInfo extends Info {
         super(tag, fileReader);
         nameIndex = new U2("name_index", fileReader.readShort());
     }
+
+    public U2 getNameIndex() {
+        return nameIndex;
+    }
 }
