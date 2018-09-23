@@ -27,6 +27,7 @@ public class ClassFile {
     private final AttributeInfo[] attributeInfos;
 
     public ClassFile(ClassFileReader fileReader) {
+    private String hexAndAscii;
         this.magic = new U4("magic", fileReader.readInt());
         this.minorVersion = new U2("minor_version", fileReader.readShort());
         this.majorVersion = new U2("major_version", fileReader.readShort());
@@ -124,5 +125,11 @@ public class ClassFile {
 
     public AttributeInfo[] getAttributeInfos() {
         return attributeInfos;
+    }
+    public String getHexAndAscii() {
+        return hexAndAscii;
+    }
+    public void setHexAndAscii(String hexAndAscii) {
+        this.hexAndAscii = hexAndAscii;
     }
 }
