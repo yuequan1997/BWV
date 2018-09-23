@@ -9,6 +9,8 @@ Beautiful Class Viewer（漂亮的字节码阅读器）
 
 ## How To Use
 
+Download https://github.com/yuequan1997/BWV/releases
+
 ```
 java -jar bwv-{version}.jar
 ```
