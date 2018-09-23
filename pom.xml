@@ -6,7 +6,7 @@
 
     <groupId>org.yuequan.bwv</groupId>
     <artifactId>bwv</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.5.0.Alpha</version>
     <modules>
         <module>bwv-gui</module>
         <module>bwv-classfile</module>
@@ -14,7 +14,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <bwv.version>1.0-SNAPSHOT</bwv.version>
+        <bwv.version>0.5.0.Alpha</bwv.version>
     </properties>
 
     <build>
@@ -27,12 +27,42 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <archive>
+                                <manifest>
+                                    <mainClass>
+                                        org.yuequan.bwv.gui.App
+                                    </mainClass>
+                                </manifest>
+                            </archive>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
         <resources>
             <resource>
                 <directory>src/main/java</directory>
                 <includes>
                     <include>**/*.fxml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/**</include>
                 </includes>
             </resource>
         </resources>
