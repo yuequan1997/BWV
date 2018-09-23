@@ -1,12 +1,17 @@
 package org.yuequan.bwv.classfile;
 
 import org.yuequan.bwv.classfile.attribute.AttributeInfo;
+import org.yuequan.bwv.classfile.constant.ConstantClassInfo;
+import org.yuequan.bwv.classfile.constant.ConstantFieldRefInfo;
 import org.yuequan.bwv.classfile.constant.ConstantPool;
 import org.yuequan.bwv.classfile.datatype.U2;
 import org.yuequan.bwv.classfile.datatype.U4;
 import org.yuequan.bwv.classfile.field.FieldInfo;
 import org.yuequan.bwv.classfile.method.MethodInfo;
 import org.yuequan.bwv.classfile.reader.ClassFileReader;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClassFile {
     private final U4 magic;
@@ -25,9 +30,10 @@ public class ClassFile {
     private final MethodInfo[] methodInfos;
     private final U2 attributesCount;
     private final AttributeInfo[] attributeInfos;
-
-    public ClassFile(ClassFileReader fileReader) {
+    private String name;
     private String hexAndAscii;
+    public ClassFile(String name, ClassFileReader fileReader) {
+        this.name = name;
         this.magic = new U4("magic", fileReader.readInt());
         this.minorVersion = new U2("minor_version", fileReader.readShort());
         this.majorVersion = new U2("major_version", fileReader.readShort());
@@ -126,9 +132,66 @@ public class ClassFile {
     public AttributeInfo[] getAttributeInfos() {
         return attributeInfos;
     }
+
+    public String getThisClassString(){
+        ConstantClassInfo classInfo = (ConstantClassInfo) constantPool.getConstantInfo().getInfos().get(thisClass.getValue() - 1);
+        return new String(constantPool.getConstantInfo().getConstantUtf8InfoMapper().get(Integer.valueOf(classInfo.getNameIndex().getValue())).getBytes());
+    }
+
+    public String getSuperClassString(){
+        ConstantClassInfo classInfo = (ConstantClassInfo) constantPool.getConstantInfo().getInfos().get(superClass.getValue() - 1);
+        return new String(constantPool.getConstantInfo().getConstantUtf8InfoMapper().get(Integer.valueOf(classInfo.getNameIndex().getValue())).getBytes());
+    }
+
+    public List<ConstantClassInfo> getInterfaceList(){
+        List<ConstantClassInfo> constantClassInfos = new ArrayList<>();
+        for (U2 interfaceU2 : this.getInterfaces()) {
+            ConstantClassInfo classInfo = (ConstantClassInfo) constantPool.getConstantInfo().getInfos().get(interfaceU2.getValue() - 1);
+            constantClassInfos.add(classInfo);
+        }
+        return constantClassInfos;
+    }
+
+    public List<String> getInterfaceStringList(){
+        List<String> interfaceStringList  = new ArrayList<>();
+        getInterfaceList().forEach(constantClassInfo -> {
+            interfaceStringList.add(new String(constantPool.getConstantInfo().getConstantUtf8InfoMapper().get(Integer.valueOf(constantClassInfo.getNameIndex().getValue())).getBytes()));
+        });
+        return  interfaceStringList;
+    }
+
+    public List<String> getFieldList(){
+        List<String> constantFieldRefInfos = new ArrayList<>();
+        for (FieldInfo fieldInfo : this.fieldInfos) {
+            constantFieldRefInfos.add(constantPool.getConstantInfo().getInfoWrappers().get(fieldInfo.getNameIndex().getValue() - 1).getValue());
+        }
+        return constantFieldRefInfos;
+    }
+
+    public List<String> getMethodList(){
+        List<String> methods = new ArrayList<>();
+        for (MethodInfo methodInfo : this.methodInfos) {
+            methods.add(constantPool.getConstantInfo().getInfoWrappers().get(methodInfo.getNameIndex().getValue() - 1).getValue());
+        }
+        return methods;
+    }
+
+    public List<String> getAttributeList(){
+        List<String> attributes = new ArrayList<>();
+        for (AttributeInfo attributeInfo : this.getAttributeInfos()) {
+            attributes.add(constantPool.getConstantInfo().getInfoWrappers().get(attributeInfo.getAttributeNameIndex().getValue() - 1).getValue());
+        }
+        return attributes;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public String getHexAndAscii() {
         return hexAndAscii;
     }
+
     public void setHexAndAscii(String hexAndAscii) {
         this.hexAndAscii = hexAndAscii;
     }

@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../../../../../../resources/style.css, @/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.yuequan.bwv.gui.controller.AppController">
+<BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" stylesheets="@../../../../../../resources/style.css, @/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.yuequan.bwv.gui.controller.AppController">
    <left>
       <AnchorPane fx:id="leftPane" prefHeight="200.0" prefWidth="200.0" styleClass="left-pane" BorderPane.alignment="CENTER">
          <children>
@@ -21,7 +21,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <ScrollPane layoutY="50.0" prefHeight="515.0" prefWidth="196.0" styleClass="left-pane__scroll-pannel" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="55.0">
+            <ScrollPane fitToHeight="true" fitToWidth="true" layoutY="50.0" prefHeight="515.0" prefWidth="196.0" styleClass="left-pane__scroll-pannel" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="55.0">
               <content>
                 <AnchorPane styleClass="scroll-panel__tree-panel">
                      <children>
@@ -50,6 +50,11 @@
                   <Button layoutX="563.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" styleClass="close" text="X" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="16.0" />
                </children>
             </AnchorPane>
+            <TextArea fx:id="hexTextArea" editable="false" layoutX="14.0" layoutY="56.0" prefHeight="535.0" prefWidth="600.0" styleClass="hex-textarea" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+               <font>
+                  <Font name="Courier New" size="16.0" />
+               </font>
+            </TextArea>
          </children></AnchorPane>
    </center>
 </BorderPane>

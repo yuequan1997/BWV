@@ -51,7 +51,46 @@
     -fx-text-fill: #cbc9c9;
 }
 
-
 .tree-cell > .tree-disclosure-node > .arrow {
     -fx-background-color: #cbc9c9;
+}
+.hex-textarea{
+    -fx-text-box-border: transparent;
+    -fx-focus-color: transparent; -fx-text-box-border: transparent;
+    -fx-background-color: transparent, #252525, transparent, #252525;
+    -fx-text-fill: #6b6a6a;
+    -fx-font-size: 16;
+    -fx-font-family: "Courier New";
+}
+.hex-textarea .content{
+    -fx-padding: 10px;
+    -fx-background-color: #252525;
+    -fx-text-fill: #6b6a6a;
+    -fx-font-family: "Courier New";
+}
+
+.scroll-pane {
+    -fx-background-color: #252525;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #73fbef;
+    -fx-background-radius: 6em;
 }

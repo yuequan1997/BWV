@@ -4,7 +4,7 @@ package org.yuequan.bwv.gui.controller;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TreeItem;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TreeView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -14,7 +14,6 @@ import javafx.stage.Window;
 import org.yuequan.bwv.classfile.ClassFile;
 import org.yuequan.bwv.classfile.parser.ClassFileParser;
 import org.yuequan.bwv.gui.tree.ClassFileNode;
-import org.yuequan.bwv.gui.tree.ClassFileTreeItem;
 import org.yuequan.bwv.gui.tree.ClassFileTreePackable;
 
 import java.io.File;
@@ -33,6 +32,8 @@ public class AppController {
     private BorderPane rootPane;
     @FXML
     private TreeView<ClassFileNode> treeView;
+    @FXML
+    private TextArea hexTextArea;
 
     private double xOffset;
     private double yOffset;
@@ -42,31 +43,6 @@ public class AppController {
      */
     @FXML
     public void initialize(){
-//        ClassFileTreeItem rootItem = new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("Test.class")));
-//        rootItem.setExpanded(true);
-//        for (int i = 0; i < 6; i++) {
-//            ClassFileTreeItem item;
-//            if(i == 0){
-//                item = new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("macgic: 0XCAFEBABE")));
-//            }else if(i == 1){
-//                item = new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("minor_version: 0")));
-//            }else if(i == 2){
-//                item = new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("major_version: 52")));
-//            }else if(i == 3){
-//                item = new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("constant_pool_count: 13")));
-//            }else if(i == 4){
-//                item = new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("constant_pool")));
-//                item.getChildren().add(new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("no message"))));
-//                item.getChildren().add(new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("no message"))));
-//            } else if(i == 5){
-//                item = new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("interfaces_count: 0")));
-//            }else{
-//                item = new ClassFileTreeItem(new ClassFileNode(new ClassFileComponent("no message")));
-//            }
-//            rootItem.getChildren().add(item);
-//        }
-       // treeView.setRoot(rootItem);
-
     }
 
     /**
@@ -108,7 +84,9 @@ public class AppController {
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Choose Class File", "*.class"));
         File file = fileChooser.showOpenDialog(getWindow());
         if(file != null){
-            ClassFileTreePackable.pack(new ClassFileParser(file).parser(), treeView);
+            ClassFile classFile = new ClassFileParser(file).parser();
+            ClassFileTreePackable.pack(classFile, treeView);
+            hexTextArea.setText(classFile.getHexAndAscii());
         }
     }
 
