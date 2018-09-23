@@ -21,4 +21,24 @@ public class FieldInfo {
             attributeInfos[i] = new AttributeInfo(fileReader);
         }
     }
+
+    public U2 getDescriptorIndex() {
+        return descriptorIndex;
+    }
+
+    public U2 getNameIndex() {
+        return nameIndex;
+    }
+
+    public AttributeInfo[] getAttributeInfos() {
+        return attributeInfos;
+    }
+
+    public U2 getAccessFlags() {
+        return accessFlags;
+    }
+
+    public U2 getAttributeCount() {
+        return attributeCount;
+    }
 }
