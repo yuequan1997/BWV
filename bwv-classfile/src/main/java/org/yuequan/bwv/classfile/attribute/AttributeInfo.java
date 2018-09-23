@@ -18,4 +18,16 @@ public class AttributeInfo {
             infos[i] = new U1("info", fileReader.readByte());
         }
     }
+
+    public U1[] getInfos() {
+        return infos;
+    }
+
+    public U2 getAttributeNameIndex() {
+        return attributeNameIndex;
+    }
+
+    public U4 getAttributeLength() {
+        return attributeLength;
+    }
 }
