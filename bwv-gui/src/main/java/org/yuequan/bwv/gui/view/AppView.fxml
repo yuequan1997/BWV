@@ -42,7 +42,6 @@
                       <Menu mnemonicParsing="false" styleClass="menu" text="File">
                         <items>
                           <MenuItem mnemonicParsing="false" onAction="#handleOpenFileOnAction" text="Open..." />
-                              <MenuItem mnemonicParsing="false" text="Open Jars" />
                         </items>
                       </Menu>
                     </menus>
