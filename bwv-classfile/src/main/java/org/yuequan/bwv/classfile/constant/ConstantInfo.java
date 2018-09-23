@@ -105,4 +105,8 @@ public class ConstantInfo {
     public List<InfoWrapper> getInfoWrappers() {
         return infoWrappers;
     }
+
+    public Map<Integer, ConstantUtf8Info> getConstantUtf8InfoMapper() {
+        return constantUtf8InfoMapper;
+    }
 }
